@@ -1,0 +1,33 @@
+<p>flipkart works!</p>
+<table class="table table-dark">
+    <thead>
+         <th>id</th>
+         <th>title</th>
+         <th>price</th>
+         <th>description</th>
+         <th>category</th>
+         <th>image</th>
+    
+         <th>rating rate</th>
+         <th>rating count</th>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let flipkart of flipkarts">
+            <td>{{flipkart.id}}</td>
+            <td>{{flipkart.title}}</td>
+            <td>{{flipkart.price}}</td>
+            <td>{{flipkart.description}}</td>
+            <td>{{flipkart.category}}</td>
+                  
+           <td>
+            <img src="{{flipkart.image}}" width="100px" height="100px">
+           </td>
+           
+           <td>{{flipkart.rating.rate}}</td>
+           <td>{{flipkart.rating.count}}</td>
+  
+        </tr>
+    </tbody>
+</table>
+

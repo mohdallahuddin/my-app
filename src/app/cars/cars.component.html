@@ -1,0 +1,15 @@
+<p>cars works!</p>
+<label>company</label>
+<input type="radio" name="company" value="Honda" [(ngModel)]="company">
+<label>Honda</label>
+<input type="radio" name="company" value="BMW" [(ngModel)]="company">
+<label>BMW</label>
+<input type="radio" name="company" value="Audi" [(ngModel)]="company">
+<label>Audi</label>
+<br>
+
+<h1>{{company}}</h1>
+
+<img *ngIf="company=='Honda'" src="https://www.supercars.net/blog/wp-content/uploads/2018/08/2019-Acura-NSX-04.jpg" height="30%" width="30%">
+<img *ngIf="company=='BMW'" src="https://m.media-amazon.com/images/I/71Ay-qAhGDL._SL1340_.jpg" height="30%" width="30%">
+<img *ngIf="company=='Audi'" src="https://techcrunch.com/wp-content/uploads/2020/01/audi-aime-21.jpg?w=1024" height="30%" width="30%">
