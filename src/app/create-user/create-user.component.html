@@ -3,10 +3,21 @@
 
     <label>Name:</label>
     <input type="text" formControlName="name">
+    <div class="error" *ngIf="userForm.get('name')?.touched && userForm.get('name')?.invalid">
+        <p class="field" *ngIf="userForm.get('name')?.errors?.['required']">*This field is required</p>
+        <p class="minlength" *ngIf="userForm.get('name')?.errors?.['minlength']">Min 3 chars required</p>
+        <p class="maxlength" *ngIf="userForm.get('name')?.errors?.['maxlength']">Max 10 chars required</p>
+
+    </div>
     <br>
 
     <label>Phone:</label>
-    <input type="number" formControlName="Phone">
+    <input type="number" formControlName="phone">
+    <div class="error" *ngIf="userForm.get('phone')?.touched && userForm.get('phone')?.invalid">
+        <p class="field" *ngIf="userForm.get('phone')?.errors?.['required']">*This field is required</p>
+        <p class="minlength" *ngIf="userForm.get('phone')?.errors?.['minlength']">phone no should be min 10 digits</p>
+        <p class="maxlength" *ngIf="userForm.get('phone')?.errors?.['maxlength']">Max 10 chars required</p>
+    </div>
     <br>
 
     <label>DOB:</label>
@@ -26,6 +37,48 @@
 
     </div>
 
-    <button (click)="submit()">submit</button>
+    <button (click)="add()">add card</button>
+
+    <div formArrayName="cards">
+        <div *ngFor="let card of cardsFormArray?.controls; let i = index">
+            <div formGroupName="{{i}}">
+                <input type="text" formControlName="name" placeholder="name">
+                <br>
+                <input type="text" formControlName="expiry" placeholder="expiry">
+                <input type="text" formControlName="cvv" placeholder="cvv">
+                <button class="btn btn-danger"(click)="delete(i)">delete</button>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+    <label>Type:</label>
+    <input type="radio" name="type" formControlName="type" value="dayscholar">
+    <label>day scholar</label>
+    <input type="radio" name="type" formControlName="type" value="residential">
+    <label>residential</label>
+    <br>
+
+    <div *ngIf="userForm.get('type')?.value == 'dayscholar'">
+        <label>bus fee</label>
+        <input type="number"formControlName="busfee">
+        <br>
+    </div>
+   
+    <div *ngIf="userForm.get('type')?.value == 'residential'">
+        <label>hostel fee</label>
+        <input type="number"formControlName="hostelfee">
+        <br>
+    
+    </div>
+ 
+
+    <button (click)="submit()" >submit</button>
+
+    
+
+
+
+
 
 </form>
