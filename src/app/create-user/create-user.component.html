@@ -15,8 +15,8 @@
     <input type="number" formControlName="phone">
     <div class="error" *ngIf="userForm.get('phone')?.touched && userForm.get('phone')?.invalid">
         <p class="field" *ngIf="userForm.get('phone')?.errors?.['required']">*This field is required</p>
-        <p class="minlength" *ngIf="userForm.get('phone')?.errors?.['minlength']">phone no should be min 10 digits</p>
-        <p class="maxlength" *ngIf="userForm.get('phone')?.errors?.['maxlength']">Max 10 chars required</p>
+        <p  *ngIf="userForm.get('phone')?.errors?.['min']">phone no should be min 10 digits</p>
+        <p  *ngIf="userForm.get('phone')?.errors?.['max']">phone no max 10 digits</p>
     </div>
     <br>
 
@@ -33,6 +33,12 @@
 
         <label>Pin</label>
         <input type="number" formControlName="pin">
+        <div class="error" *ngIf="userForm.get('address')?.get('pin')?.touched && userForm.get('address')?.get('pin')?.invalid">
+            <p class="field" *ngIf="userForm.get('address')?.get('pin')?.errors?.['required']">Pin is required</p>
+            <p *ngIf="userForm.get('address')?.get('pin')?.errors?.['min']">Pin should be contain min 6 digits</p>
+            <p *ngIf="userForm.get('address')?.get('pin')?.errors?.['max']">Pin should contain max 6 digits</p>
+            
+        </div>
         <br>
 
     </div>
@@ -45,7 +51,14 @@
                 <input type="text" formControlName="name" placeholder="name">
                 <br>
                 <input type="text" formControlName="expiry" placeholder="expiry">
+                <br>
                 <input type="text" formControlName="cvv" placeholder="cvv">
+                <div class="error" *ngIf="cardsFormArray.controls[i].get('cvv')?.touched && cardsFormArray.controls[i].get('cvv')?.invalid">
+                    <p *ngIf="cardsFormArray.controls[i].get('cvv')?.errors?.['required']">cvv is required</p>
+                    <p *ngIf="cardsFormArray.controls[i].get('cvv')?.errors?.['min']">cvv min 3 digits</p>
+                    <p *ngIf="cardsFormArray.controls[i].get('cvv')?.errors?.['max']">cvv max 3 digits</p>
+
+                </div>
                 <button class="btn btn-danger"(click)="delete(i)">delete</button>
                 <br>
                 <br>

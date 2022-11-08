@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { MailComponent } from './mail/mail.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { PostComponent } from './post/post.component';
+import { PracticeComponent } from './practice/practice.component';
 import { SquareComponent } from './square/square.component';
 import { StarComponent } from './star/star.component';
 import { VehicleComponent } from './vehicle/vehicle.component';
@@ -44,12 +45,16 @@ const routes: Routes = [
     {path:'mail',component:MailComponent},
     {path:'bank-details/:id',component:BankDetailsComponent},
     {path:'vehicle-details/:id',component:VehicleComponent},
+    {path:'practice',component:PracticeComponent},
     {path:'create-account',component:CreateAccountComponent},
-    {path:'create-user',component:CreateUserComponent}
+    {path:'create-user',component:CreateUserComponent},
+    {path:'edit-account/:id',component:CreateAccountComponent}
+   
 
   ]},
 
   {path:'',component:LoginComponent},
+  
   
 ];
   

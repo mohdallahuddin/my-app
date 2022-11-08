@@ -11,13 +11,13 @@ export class CreateUserComponent implements OnInit {
   public userForm: FormGroup = new FormGroup (
     {
       name:new FormControl(null,[Validators.required,Validators.minLength(3),Validators.maxLength(10)]),
-      phone:new FormControl(null,[Validators.required,Validators.minLength(1000000000),Validators.maxLength(9999999999)
+      phone:new FormControl(null,[Validators.required,Validators.min(1000000000),Validators.max(9999999999)
       ]),
       dob:new FormControl(),
       address:new FormGroup(
         {
           city: new FormControl(),
-          pin: new FormControl()
+          pin: new FormControl(null,[Validators.required,Validators.min(100000),Validators.max(999999)])
         }
       ),
       cards: new FormArray([]),
@@ -36,7 +36,7 @@ export class CreateUserComponent implements OnInit {
         {
           name: new FormControl(),
           expiry: new FormControl(),
-          cvv: new FormControl()
+          cvv: new FormControl(null,[Validators.required, Validators.min(100), Validators.max(999)])
         }
       )
     )
@@ -50,5 +50,6 @@ export class CreateUserComponent implements OnInit {
   }
   submit(){
     console.log(this.userForm);
+    this.userForm.markAllAsTouched();
   }
 }
